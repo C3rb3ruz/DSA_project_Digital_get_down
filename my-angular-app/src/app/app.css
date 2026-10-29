@@ -1,0 +1,163 @@
+.heart-gallery {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    height: 720px; /* Increased height for vertical spacing */
+    margin: 5px auto 0;
+    flex-shrink: 0;
+}
+
+.heart {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    clip-path: polygon(
+        50% 92%,
+        8% 52%,
+        3% 42%,
+        3% 30%,
+        8% 19%,
+        17% 11%,
+        28% 10%,
+        39% 16%,
+        50% 27%,
+        61% 16%,
+        72% 10%,
+        83% 11%,
+        92% 19%,
+        97% 30%,
+        97% 42%,
+        92% 52%
+    );
+    transition: transform 0.35s ease, filter 0.35s ease;
+    isolation: isolate;
+}
+
+.heart img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.heart-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+/* Color Overlays */
+.pink {
+    background: rgba(255, 150, 190, 0.48);
+}
+
+.blue {
+    background: rgba(137, 207, 240, 0.48);
+}
+
+.green {
+    background: rgba(176, 224, 170, 0.45);
+}
+
+.purple {
+    background: rgba(190, 150, 255, 0.48);
+}
+
+/* Base Sizes */
+.heart-small {
+    width: 40%;
+}
+
+.heart-large {
+    width: 65%;
+}
+
+/* Alternating Vertical Stack Layout */
+
+/* 1. First Heart: Top-Left */
+.heart-top-left {
+    top: 0%;
+    left: 8%;
+    z-index: 1;
+    transform: rotate(-6deg);
+}
+
+/* 2. Second Heart: Middle-Right (Alternating) */
+.heart-top-right {
+    top: 30%;
+    right: 8%;
+    z-index: 2;
+    transform: rotate(6deg);
+}
+
+/* 3. Third Heart: Bottom-Left (Alternating back) */
+.heart-bottom {
+    top: 58%;
+    left: 12%;
+    z-index: 3;
+    transform: rotate(-4deg);
+}
+
+/* Hover Effects */
+.heart-top-left:hover {
+    transform: rotate(-6deg) scale(1.04);
+}
+
+.heart-top-right:hover {
+    transform: rotate(6deg) scale(1.04);
+}
+
+.heart-bottom:hover {
+    transform: rotate(-4deg) scale(1.03);
+}
+
+/* Responsive Styles */
+@media (max-width: 1023px) {
+    .heart-gallery {
+        max-width: 580px;
+        height: 650px;
+    }
+}
+
+@media (max-width: 767px) {
+    .heart-gallery {
+        width: 100%;
+        max-width: 430px;
+        height: auto;
+        aspect-ratio: 1 / 1.5;
+        margin: 30px auto 0;
+    }
+
+    .heart-small {
+        width: 44%;
+    }
+
+    .heart-large {
+        width: 70%;
+    }
+
+    .heart-top-left {
+        top: 2%;
+        left: 5%;
+    }
+
+    .heart-top-right {
+        top: 32%;
+        right: 5%;
+    }
+
+    .heart-bottom {
+        top: 60%;
+        left: 10%;
+    }
+}
+
+@media (max-width: 420px) {
+    .heart-gallery {
+        aspect-ratio: 1 / 1.6;
+    }
+}
